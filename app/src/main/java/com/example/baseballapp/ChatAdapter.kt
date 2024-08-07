@@ -12,7 +12,6 @@ class ChatAdapter(private val chatMessagesData: List<ChatMessageData>) :
 
     inner class ChatViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val teamLogo: ImageView = itemView.findViewById(R.id.teamLogo)
-        val userName: TextView = itemView.findViewById(R.id.userName)
         val chatMessage: TextView = itemView.findViewById(R.id.chatMessage)
     }
 
@@ -24,7 +23,6 @@ class ChatAdapter(private val chatMessagesData: List<ChatMessageData>) :
     override fun onBindViewHolder(holder: ChatViewHolder, position: Int) {
         val chatMessage = chatMessagesData[position]
         holder.teamLogo.setImageResource(chatMessage.teamLogoResId)
-        holder.userName.text = chatMessage.userName
         holder.chatMessage.text = chatMessage.message
     }
 

@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.baseballapp.databinding.ActivityMainBinding
 import com.google.android.material.navigation.NavigationView
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import RankingFragment
 import android.widget.Button
 import android.widget.ImageView

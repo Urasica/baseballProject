@@ -1,5 +1,6 @@
 package com.example.baseballapp
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -52,7 +53,7 @@ class ScheduleFragment : Fragment() {
         binding.gamelist.setOnItemClickListener { parent, view, position, id ->
             val game = gameList[position]
             val roomId = game.roomId
-            val nickname = "sumin"
+            val nickname = "soo_ob"
 
             val fragment = ChatingFragment().apply {
                 arguments = Bundle().apply {
@@ -64,6 +65,13 @@ class ScheduleFragment : Fragment() {
             requireActivity().supportFragmentManager.beginTransaction()
                 .replace(R.id.frame, fragment)
                 .commitAllowingStateLoss()
+        }
+
+        binding.switch1.setOnCheckedChangeListener{CompoundButton, onSwitch ->
+            if(onSwitch){
+                val intent=Intent(requireContext(), Metaverse1Activity::class.java)
+                startActivity(intent)
+            }
         }
     }
 

@@ -1,14 +1,14 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-    id("kotlin-parcelize")
+    id ("kotlin-parcelize")
 }
 
 android {
     namespace = "com.example.baseballapp"
     compileSdk = 34
 
-    viewBinding {
+    viewBinding{
         enable = true
     }
 
@@ -52,8 +52,6 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.0.4")
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation("androidx.recyclerview:recyclerview:1.2.1")
-    implementation("org.jetbrains.kotlin:kotlin-parcelize-runtime:1.5.21")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -62,6 +60,5 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    implementation ("com.squareup.okhttp3:logging-interceptor:4.9.1")
-
+    implementation ("org.jetbrains.kotlin:kotlin-parcelize-runtime:1.5.21")
 }

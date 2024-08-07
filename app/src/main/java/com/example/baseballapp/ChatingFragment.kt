@@ -16,7 +16,6 @@ class ChatingFragment : Fragment() {
     private lateinit var webSocket: WebSocket
     private lateinit var binding: FragmentChatingBinding
     private lateinit var nickname: String
-    private lateinit var roomId: String
     private val messageList = ArrayList<ChatMessageData>()
     private lateinit var chatAdapter: ChatAdapter
 
@@ -49,16 +48,16 @@ class ChatingFragment : Fragment() {
         binding.buttonSend.setOnClickListener {
             val message = binding.editTextMessage.text.toString()
             if (message.isNotEmpty()) {
-                val chatMessage = ChatMessageData(R.drawable.lg_logo, nickname, message)
+                val formattedMessage = "$nickname\n$message"
+                webSocket.send(formattedMessage)
                 binding.editTextMessage.text.clear()
-                addMessage(chatMessage)
             }
         }
     }
 
     fun showMessage(message: String) {
         Log.d("ChatFragment", "Received message: $message")
-        val chatMessage = ChatMessageData(R.drawable.lg_logo, "Server", message)
+        val chatMessage = ChatMessageData(R.drawable.baseball, message)
         addMessage(chatMessage)
     }
 

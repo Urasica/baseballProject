@@ -1,0 +1,77 @@
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <HorizontalScrollView
+        android:id="@+id/horizontal_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <ScrollView
+            android:id="@+id/vertical_scroll_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scrollbars="none">
+
+            <ImageView
+                android:id="@+id/background_map"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/background" />
+        </ScrollView>
+    </HorizontalScrollView>
+
+    <ImageView
+        android:id="@+id/character"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/standing"
+        android:layout_gravity="center" />
+
+    <LinearLayout
+        android:id="@+id/control_buttons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <Button
+            android:id="@+id/button_up"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="47dp"
+            android:backgroundTint="@color/gray"
+            android:text="상" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/button_left"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:backgroundTint="@color/gray"
+                android:text="좌" />
+
+            <Button
+                android:id="@+id/button_down"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:backgroundTint="@color/gray"
+                android:text="하" />
+
+            <Button
+                android:id="@+id/button_right"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:backgroundTint="@color/gray"
+                android:text="우" />
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>
