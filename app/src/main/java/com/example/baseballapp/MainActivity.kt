@@ -9,7 +9,6 @@ import RankingFragment
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import com.example.yourapp.CommunityFragment
 import androidx.appcompat.app.ActionBarDrawerToggle
 
 class MainActivity : AppCompatActivity() {

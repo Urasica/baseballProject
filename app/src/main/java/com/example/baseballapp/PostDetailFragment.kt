@@ -1,6 +1,7 @@
 package com.example.baseballapp
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -65,6 +66,10 @@ class PostDetailFragment : Fragment() {
         binding.btnDetailDelete.setOnClickListener {
             deletePost(post.id.toLong())
         }
+
+        binding.btnDetailUpvote.setOnClickListener {
+            upvotePost(post.id.toLong())
+        }
     }
 
     private fun fetchComments(postId: Long) {
@@ -84,6 +89,31 @@ class PostDetailFragment : Fragment() {
         })
     }
 
+    private fun upvotePost(postId: Long) {
+        Log.d("PostDetailFragment", "Upvoting post with ID: $postId")
+        ApiObject.getRetrofitService.upvotePost(postId).enqueue(object : Callback<Void> {
+            override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                if (response.isSuccessful) {
+                    Toast.makeText(context, "추천하였습니다.", Toast.LENGTH_SHORT).show()
+                    updateUpvoteInCommunity(postId)
+                } else {
+                    Toast.makeText(context, "추천에 실패했습니다. 오류 코드: ${response.code()}", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<Void>, t: Throwable) {
+                Toast.makeText(context, "네트워크 오류: ${t.message}", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    private fun updateUpvoteInCommunity(postId: Long) {
+        val parentFragment = parentFragmentManager.findFragmentById(R.id.boardContainer)
+        if (parentFragment is CommunityFragment) {
+            parentFragment.updateUpvoteForPost(postId)
+        }
+    }
+
     private fun submitComment(content: String) {
         val newComment = CommentData(0, content, "사용자 이름", "2024-08-05T07:23:21.610Z", post.title)
         ApiObject.getRetrofitService.submitComment(post.id.toLong(), newComment).enqueue(object : Callback<Void> {
@@ -101,7 +131,12 @@ class PostDetailFragment : Fragment() {
             }
         })
     }
-
+    private fun updateCommentCountInCommunity(postId: Long) {
+        val parentFragment = parentFragmentManager.findFragmentById(R.id.boardContainer)
+        if (parentFragment is CommunityFragment) {
+            parentFragment.updateCommentCountForPost(postId)
+        }
+    }
     private fun deletePost(postId: Long) {
         ApiObject.getRetrofitService.deletePost(postId).enqueue(object : Callback<Void> {
             override fun onResponse(call: Call<Void>, response: Response<Void>) {

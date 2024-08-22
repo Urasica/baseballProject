@@ -32,6 +32,7 @@ data class BoardData(
     val updatedAt: String,
     val upVote: Int,
     val type: String,
+    val commentCount: Int,
     var comments: List<CommentData>? = emptyList() // 빈 리스트로 초기화, nullable로 변경
 ) : Parcelable
 

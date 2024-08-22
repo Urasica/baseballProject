@@ -1,4 +1,4 @@
-package com.example.yourapp
+package com.example.baseballapp
 
 import android.os.Bundle
 import android.util.Log
@@ -11,8 +11,8 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.baseballapp.*
 import com.example.baseballapp.databinding.FragmentCommunityBinding
+import com.example.yourapp.WritePostFragment
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -97,6 +97,7 @@ class CommunityFragment : Fragment() {
             }
         }
     }
+
     private fun performSearch(query: String) {
         Log.d("CommunityFragment", "Performing search for: $query")
         ApiObject.getRetrofitService.searchBoards(query, "자유게시판", 0).enqueue(object : Callback<PagedBoardResponse> {
@@ -129,6 +130,28 @@ class CommunityFragment : Fragment() {
         })
     }
 
+    fun updateUpvoteForPost(postId: Long) {
+        postAdapter.updateUpvote(postId)
+    }
+    fun updateCommentCountForPost(postId: Long) {
+        // 서버에서 게시글의 최신 데이터를 가져와 댓글 수를 업데이트하는 방식으로 처리
+        ApiObject.getRetrofitService.getBoardsByPage("자유게시판", 0, 10).enqueue(object : Callback<PagedBoardResponse> {
+            override fun onResponse(call: Call<PagedBoardResponse>, response: Response<PagedBoardResponse>) {
+                if (response.isSuccessful) {
+                    val updatedPost = response.body()?.content?.find { it.id.toLong() == postId }
+                    updatedPost?.let {
+                        postAdapter.updateCommentCount(postId, it.commentCount)
+                    }
+                } else {
+                    Toast.makeText(context, "게시글 데이터를 가져오는데 실패했습니다. 오류 코드: ${response.code()}", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<PagedBoardResponse>, t: Throwable) {
+                Toast.makeText(context, "네트워크 오류: ${t.message}", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()
