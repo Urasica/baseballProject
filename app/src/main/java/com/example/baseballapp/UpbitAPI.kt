@@ -46,7 +46,7 @@ interface UpbitAPI {
     fun getComments(@Path("boardId") boardId: Long): Call<List<CommentData>>
 
     // 검색 API 엔드포인트 추가
-    @GET("api/boards/search")
+    @GET("boards/search")
     fun searchBoards(
         @Query("keyword") keyword: String,
         @Query("type") type: String,

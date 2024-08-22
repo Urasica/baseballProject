@@ -16,10 +16,19 @@
         android:theme="@style/Theme.BaseballApp"
         tools:targetApi="31">
 
+        <!-- LoginActivity를 첫 화면으로 설정 -->
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <activity
             android:name=".Metaverse2Activity"
             android:exported="false" />
-
         <activity
             android:name=".Metaverse1Activity"
             android:exported="false"
@@ -29,14 +38,10 @@
             android:name="com.google.android.actions"
             android:resource="@layout/hitter_rank_header_item" />
 
+        <!-- MainActivity는 이제 일반 액티비티로 사용 -->
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="false" />
     </application>
 
 </manifest>
