@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="8dp">
 
+    <!-- 게시글 목록 헤더 -->
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,38 +24,52 @@
                 android:layout_weight="3.5"
                 android:text="제목"
                 android:gravity="center"
-               android:padding="4dp"
+                android:padding="4dp"
                 android:textStyle="bold" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.2"
-            android:text="작성일"
-            android:gravity="center"
-            android:padding="4dp"
-            android:textStyle="bold" />
+                android:text="작성일"
+                android:gravity="center"
+                android:padding="4dp"
+                android:textStyle="bold" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.8"
-            android:text="댓글"
-            android:gravity="right"
-            android:padding="4dp"
-            android:textStyle="bold" />
+                android:text="댓글"
+                android:gravity="right"
+                android:padding="4dp"
+                android:textStyle="bold" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.8"
-            android:text="추천"
-            android:gravity="right"
-            android:padding="4dp"
-            android:textStyle="bold" />
+                android:text="추천"
+                android:gravity="right"
+                android:padding="4dp"
+                android:textStyle="bold" />
         </TableRow>
     </TableLayout>
 
+    <!-- RecyclerView: 게시글 목록을 표시 -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
+        android:layout_height="600dp"
+    android:padding="8dp"
+    android:layout_weight="1" />
+
+    <!-- 페이지 번호를 표시하는 레이아웃 -->
+    <LinearLayout
+        android:id="@+id/paginationLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp" />
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="16dp">
+
+        <!-- 페이지 번호 버튼들이 여기에 동적으로 추가됩니다 -->
+    </LinearLayout>
 </LinearLayout>
