@@ -1,9 +1,6 @@
 package com.example.baseballapp
 
 import android.content.Context
-import android.text.Spannable
-import android.text.SpannableString
-import android.text.style.ForegroundColorSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,47 +24,17 @@ class CustomScheduleAdapter(private val context: Context, private val scheduleLi
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         val view: View = convertView ?: LayoutInflater.from(context).inflate(R.layout.item_schedule, parent, false)
 
+        // 각각의 TextView를 레이아웃에서 가져옵니다.
+        val team1TextView: TextView = view.findViewById(R.id.team1TextView)
+        val team2TextView: TextView = view.findViewById(R.id.team2TextView)
+        val dateTextView: TextView = view.findViewById(R.id.dateTextView)
+
         val schedule = scheduleList[position]
-        val scheduleTextView = view.findViewById<TextView>(R.id.schedule_text)
 
-        val place = schedule.place
-        val time = schedule.time
-        val team1 = schedule.team1
-        val team2 = schedule.team2
-
-        val scheduleText = "$place  $time ]  $team1  vs  $team2"
-        scheduleTextView.text = scheduleText
-
-        val spannableString = SpannableString(scheduleText)
-
-        val team1Start = scheduleText.indexOf(team1)
-        val team1End = team1Start + team1.length
-        spannableString.setSpan(
-            ForegroundColorSpan(context.getColor(R.color.blue)),
-            team1Start,
-            team1End,
-            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-        )
-
-        val team2Start = scheduleText.indexOf(team2)
-        val team2End = team2Start + team2.length
-        spannableString.setSpan(
-            ForegroundColorSpan(context.getColor(R.color.blue)),
-            team2Start,
-            team2End,
-            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-        )
-
-        val timeStart = scheduleText.indexOf(time)
-        val timeEnd = timeStart + time.length
-        spannableString.setSpan(
-            ForegroundColorSpan(context.getColor(R.color.gray)),
-            timeStart,
-            timeEnd,
-            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-        )
-
-        scheduleTextView.text = spannableString
+        // 데이터를 TextView에 설정합니다.
+        team1TextView.text = schedule.team1
+        team2TextView.text = schedule.team2
+        dateTextView.text = schedule.date
 
         return view
     }

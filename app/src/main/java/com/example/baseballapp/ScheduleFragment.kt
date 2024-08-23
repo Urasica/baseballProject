@@ -50,15 +50,22 @@ class ScheduleFragment : Fragment() {
 
         gameListAdapter.notifyDataSetChanged()
 
+        // 경기 선택 시 처리
         binding.gamelist.setOnItemClickListener { parent, view, position, id ->
             val game = gameList[position]
             val roomId = game.roomId
             val nickname = "soo_ob"
 
+            // 선택한 경기의 팀 이름과 날짜를 가져와 ChatingFragment에 전달
+            val teamName = game.team1  // team1을 기준으로 합니다.
+            val matchDate = game.date
+
             val fragment = ChatingFragment().apply {
                 arguments = Bundle().apply {
                     putString("ROOM_ID", roomId)
                     putString("NICKNAME", nickname)
+                    putString("TEAM_NAME", teamName)
+                    putString("MATCH_DATE", matchDate)
                 }
             }
 
@@ -67,9 +74,9 @@ class ScheduleFragment : Fragment() {
                 .commitAllowingStateLoss()
         }
 
-        binding.switch1.setOnCheckedChangeListener{CompoundButton, onSwitch ->
-            if(onSwitch){
-                val intent=Intent(requireContext(), Metaverse1Activity::class.java)
+        binding.switch1.setOnCheckedChangeListener { CompoundButton, onSwitch ->
+            if (onSwitch) {
+                val intent = Intent(requireContext(), Metaverse1Activity::class.java)
                 startActivity(intent)
             }
         }

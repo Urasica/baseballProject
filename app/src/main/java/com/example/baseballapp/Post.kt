@@ -52,3 +52,13 @@ data class PagedBoardResponse(
     val totalElements: Int,
     val content: List<BoardData>
 )
+data class MatchResponse(
+    val teamName: String,
+    val matchDate: String,
+    val innings: List<Inning>
+)
+
+data class Inning(
+    val inningNumber: Int,
+    val details: List<String>
+)
