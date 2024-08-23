@@ -54,7 +54,7 @@ class ScheduleFragment : Fragment() {
         // 경기 선택 시 처리
         binding.gamelist.setOnItemClickListener { parent, view, position, id ->
             val game = gameList[position]
-            val roomId = game.roomId
+            val roomId = "${game.date}_${game.team1}"
             val nickname = "soo_ob"
 
             // 선택한 경기의 팀 이름과 날짜를 가져와 ChatingFragment에 전달
@@ -81,6 +81,11 @@ class ScheduleFragment : Fragment() {
                 startActivity(intent)
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        binding.switch1.isChecked=false
     }
 
     @RequiresApi(Build.VERSION_CODES.O)

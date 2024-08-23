@@ -20,6 +20,10 @@ import okhttp3.WebSocket
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
+import java.util.TimeZone
 
 class ChatingFragment : Fragment() {
     private lateinit var webSocket: WebSocket
@@ -59,7 +63,8 @@ class ChatingFragment : Fragment() {
         binding.buttonSend.setOnClickListener {
             val message = binding.editTextMessage.text.toString()
             if (message.isNotEmpty()) {
-                val formattedMessage = "$nickname\n$message"
+                val time=getCurrentTimeInKorea()
+                val formattedMessage = "$nickname  $time\n$message"
                 webSocket.send(formattedMessage)
                 binding.editTextMessage.text.clear()
             }
@@ -123,6 +128,13 @@ class ChatingFragment : Fragment() {
 
         binding.liveStreamTextView.text = stringBuilder.toString()
         binding.liveStreamTextView.visibility = View.VISIBLE
+    }
+
+    private fun getCurrentTimeInKorea(): String {
+        val dateFormat = SimpleDateFormat("HH:mm", Locale.KOREAN).apply {
+            timeZone = TimeZone.getTimeZone("Asia/Seoul") // 한국 시간대 설정
+        }
+        return dateFormat.format(Date())
     }
 
     fun showMessage(message: String) {
