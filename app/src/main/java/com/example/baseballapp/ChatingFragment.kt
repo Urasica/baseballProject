@@ -1,10 +1,13 @@
 import android.os.Bundle
-
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.RelativeSizeSpan
+import android.text.style.StyleSpan
+import android.text.SpannableStringBuilder
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.baseballapp.ApiObject
@@ -63,7 +66,7 @@ class ChatingFragment : Fragment() {
         binding.buttonSend.setOnClickListener {
             val message = binding.editTextMessage.text.toString()
             if (message.isNotEmpty()) {
-                val time=getCurrentTimeInKorea()
+                val time = getCurrentTimeInKorea()
                 val formattedMessage = "$nickname  $time\n$message"
                 webSocket.send(formattedMessage)
                 binding.editTextMessage.text.clear()
@@ -120,19 +123,45 @@ class ChatingFragment : Fragment() {
 
     private fun displayMatchDetails(inningNumber: Int) {
         val inning = matchResponse.innings.find { it.inningNumber == inningNumber }
-        val stringBuilder = StringBuilder()
+        val stringBuilder = SpannableStringBuilder()
 
         inning?.details?.forEach { detail ->
-            stringBuilder.append("- $detail\n")
+            // |를 기준으로 줄바꿈
+            val detailParts = detail.split("|")
+
+            detailParts.forEachIndexed { index, part ->
+                if (index == 0 && part.contains("공격")) {
+                    // 공격 시작 문구를 더 큰 글씨로 볼드체로 설정
+                    val spannableString = SpannableString(part.trim() + "\n")
+                    spannableString.setSpan(
+                        StyleSpan(android.graphics.Typeface.BOLD),
+                        0, spannableString.length,
+                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                    )
+                    spannableString.setSpan(
+                        RelativeSizeSpan(1.2f),
+                        0, spannableString.length,
+                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                    )
+                    stringBuilder.append(spannableString)
+                } else {
+                    stringBuilder.append(part.trim() + "\n")
+                }
+            }
+
+            // 선수 이름이 포함된 줄에는 간격을 넓게 설정
+            if (detail.contains("타자")) {
+                stringBuilder.append("\n") // 줄 간격을 넓히기 위해 빈 줄 추가
+            }
         }
 
-        binding.liveStreamTextView.text = stringBuilder.toString()
+        binding.liveStreamTextView.text = stringBuilder
         binding.liveStreamTextView.visibility = View.VISIBLE
     }
 
     private fun getCurrentTimeInKorea(): String {
         val dateFormat = SimpleDateFormat("HH:mm", Locale.KOREAN).apply {
-            timeZone = TimeZone.getTimeZone("Asia/Seoul") // 한국 시간대 설정
+            timeZone = TimeZone.getTimeZone("Asia/Seoul")
         }
         return dateFormat.format(Date())
     }
