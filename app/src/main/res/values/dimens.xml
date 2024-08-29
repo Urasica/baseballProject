@@ -1,0 +1,13 @@
+<resources>
+    <dimen name="toolbar_height">200dp</dimen>
+    <dimen name="image_height">200dp</dimen>
+    <dimen name="text_size_normal">18sp</dimen> <!-- 기존보다 더 크게 설정 -->
+    <dimen name="text_size_large">24sp</dimen> <!-- 큰 텍스트 크기 설정 -->
+    <dimen name="text_padding">12dp</dimen> <!-- 패딩 증가 -->
+    <dimen name="layout_margin">16dp</dimen> <!-- 마진 증가 -->
+    <dimen name="spinner_padding">12dp</dimen> <!-- 스피너 패딩 증가 -->
+    <dimen name="header_text_width">80dp</dimen> <!-- 텍스트 너비 조정 -->
+    <dimen name="header_text_width_large">140dp</dimen> <!-- 텍스트 너비 조정 -->
+    <dimen name="item_height">80dp</dimen> <!-- 아이템 높이 증가 -->
+    <dimen name="item_padding">10dp</dimen> <!-- 아이템 패딩 추가 -->
+</resources>

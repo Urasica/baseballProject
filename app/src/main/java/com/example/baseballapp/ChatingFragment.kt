@@ -11,7 +11,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat // ContextCompat import 추가
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.baseballapp.ApiObject
@@ -54,16 +54,10 @@ class ChatingFragment : Fragment() {
         val roomId = arguments?.getString("ROOM_ID") ?: "default"
         nickname = arguments?.getString("NICKNAME") ?: "sumin"
 
-        Log.d("ChatFragment", "Room ID: $roomId")
-        Log.d("ChatFragment", "Nickname: $nickname")
-
-        val client = OkHttpClient()
-        val request = Request.Builder().url("ws://35.216.0.159:8080/ws/chat/$roomId").build()
-        val listener = ChatWebSocketListener(this)
-        webSocket = client.newWebSocket(request, listener)
+        // 웹소켓 설정 및 연결
+        setupWebSocket(roomId)
 
         chatAdapter = ChatAdapter(messageList)
-
         binding.recyclerViewMessages.layoutManager = LinearLayoutManager(context)
         binding.recyclerViewMessages.adapter = chatAdapter
 
@@ -77,6 +71,15 @@ class ChatingFragment : Fragment() {
             }
         }
 
+        // 팀 정보와 스코어 데이터 가져오기
+        val team1Name = arguments?.getString("TEAM1_NAME") ?: "팀1"
+        val team2Name = arguments?.getString("TEAM2_NAME") ?: "팀2"
+        val team1Score = arguments?.getString("TEAM1_SCORE") ?: "0"
+        val team2Score = arguments?.getString("TEAM2_SCORE") ?: "0"
+
+        // UI에 팀 정보와 스코어 설정
+        setTeamInfo(team1Name, team2Name, team1Score, team2Score)
+
         val teamName = arguments?.getString("TEAM_NAME")
         val matchDate = arguments?.getString("MATCH_DATE")
 
@@ -85,6 +88,45 @@ class ChatingFragment : Fragment() {
         }
 
         setInningButtonListeners()
+    }
+
+    // 웹소켓 설정 메서드
+    private fun setupWebSocket(roomId: String) {
+        val client = OkHttpClient()
+        val request = Request.Builder().url("ws://35.216.0.159:8080/ws/chat/$roomId").build()
+        val listener = ChatWebSocketListener(this)
+        webSocket = client.newWebSocket(request, listener)
+    }
+
+    // 추가: 팀 정보 설정 메서드
+    private fun setTeamInfo(team1Name: String, team2Name: String, team1Score: String, team2Score: String) {
+        binding.team1Name.text = team1Name
+        binding.team2Name.text = team2Name
+        binding.team1Score.text = team1Score
+        binding.team2Score.text = team2Score
+
+        // 로고 설정 (팀 이름에 따라 로고 리소스를 설정, 예시로 팀 이름으로 매핑)
+        val team1Logo = getLogoResource(team1Name)
+        val team2Logo = getLogoResource(team2Name)
+        binding.team1Logo.setImageResource(team1Logo)
+        binding.team2Logo.setImageResource(team2Logo)
+    }
+
+    // 팀 이름에 따라 로고 리소스를 매핑하는 메서드 예시
+    private fun getLogoResource(teamName: String): Int {
+        return when (teamName) {
+            "두산" -> R.drawable.doosan_logo
+            "KIA" -> R.drawable.kia_logo
+            "키움" -> R.drawable.kiwoom_logo
+            "KT" -> R.drawable.kt_logo
+            "LG" -> R.drawable.lg_logo
+            "롯데" -> R.drawable.lotte_logo
+            "NC" -> R.drawable.nc_logo
+            "삼성" -> R.drawable.samsung_logo
+            "SSG" -> R.drawable.ssg_logo
+            "한화" -> R.drawable.hanwha_logo
+            else -> R.drawable.baseball // 기본 로고 (팀 이름이 일치하지 않을 경우)
+        }
     }
 
     private fun fetchMatchDetails(teamName: String, matchDate: String) {

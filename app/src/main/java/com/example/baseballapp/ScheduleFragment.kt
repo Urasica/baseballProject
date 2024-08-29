@@ -67,6 +67,10 @@ class ScheduleFragment : Fragment() {
                     putString("NICKNAME", nickname)
                     putString("TEAM_NAME", teamName)
                     putString("MATCH_DATE", matchDate)
+                    putString("TEAM1_NAME", game.team1)
+                    putString("TEAM2_NAME", game.team2)
+                    putString("TEAM1_SCORE", game.team1Score)
+                    putString("TEAM2_SCORE", game.team2Score)
                 }
             }
 

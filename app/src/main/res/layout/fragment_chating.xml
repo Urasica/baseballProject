@@ -6,6 +6,78 @@
     android:background="@color/white"
     tools:context=".ChatingFragment">
 
+    <!-- 팀 정보와 스코어를 표시하는 영역 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:gravity="center"
+        android:background="@color/darkgray">
+
+        <ImageView
+            android:id="@+id/team1Logo"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="8dp"
+            android:contentDescription="Team 1 Logo" />
+
+        <TextView
+            android:id="@+id/team1Name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="팀1"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:layout_marginEnd="16dp" />
+
+        <TextView
+            android:id="@+id/team1Score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:layout_marginEnd="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="vs"
+            android:textSize="18sp"
+            android:textColor="@android:color/white"
+            android:layout_marginEnd="8dp" />
+
+        <TextView
+            android:id="@+id/team2Score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:layout_marginEnd="16dp" />
+
+        <TextView
+            android:id="@+id/team2Name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="팀2"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:layout_marginEnd="8dp" />
+
+        <ImageView
+            android:id="@+id/team2Logo"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:contentDescription="Team 2 Logo" />
+
+    </LinearLayout>
+
     <!-- 이닝 버튼을 가로로 1열 촘촘히 배치 -->
     <HorizontalScrollView
         android:layout_width="match_parent"
@@ -118,11 +190,13 @@
                 android:layout_margin="1dp"/>
         </LinearLayout>
     </HorizontalScrollView>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="#cccccc"
         android:layout_marginTop="8dp" />
+
     <!-- 문자 중계 영역 -->
     <ScrollView
         android:layout_width="match_parent"
@@ -143,7 +217,6 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@android:color/darker_gray" />
-
 
     <!-- 채팅 메시지 표시 영역 -->
     <LinearLayout
