@@ -81,7 +81,7 @@ class TeamRankAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 "삼성" -> R.drawable.samsung_logo
                 "SSG" -> R.drawable.ssg_logo
                 "한화" -> R.drawable.hanwha_logo
-                else -> R.drawable.baseball // 기본 로고 (팀 이름이 일치하지 않을 경우)
+                else -> R.drawable.baseball
             }
             teamLogo.setImageResource(logoResource)
         }

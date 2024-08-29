@@ -25,7 +25,7 @@
                 android:text="1회"
                 android:textSize="14sp"
                 android:textColor="@android:color/black"
-                android:backgroundTint="@android:color/white"
+                android:backgroundTint="#D3D3D3"
                 android:padding="3dp"
                 android:layout_margin="1dp"/>
 
@@ -36,7 +36,7 @@
                 android:text="2회"
                 android:textSize="14sp"
                 android:textColor="@android:color/black"
-                android:backgroundTint="@android:color/white"
+                android:backgroundTint="#D3D3D3"
                 android:padding="3dp"
                 android:layout_margin="1dp"/>
 
@@ -47,7 +47,7 @@
                 android:text="3회"
                 android:textSize="14sp"
                 android:textColor="@android:color/black"
-                android:backgroundTint="@android:color/white"
+                android:backgroundTint="#D3D3D3"
                 android:padding="3dp"
                 android:layout_margin="1dp"/>
 
@@ -58,7 +58,7 @@
                 android:text="4회"
                 android:textSize="14sp"
                 android:textColor="@android:color/black"
-                android:backgroundTint="@android:color/white"
+                android:backgroundTint="#D3D3D3"
                 android:padding="3dp"
                 android:layout_margin="1dp"/>
 
@@ -69,7 +69,7 @@
                 android:text="5회"
                 android:textSize="14sp"
                 android:textColor="@android:color/black"
-                android:backgroundTint="@android:color/white"
+                android:backgroundTint="#D3D3D3"
                 android:padding="3dp"
                 android:layout_margin="1dp"/>
 
@@ -80,7 +80,7 @@
                 android:text="6회"
                 android:textSize="14sp"
                 android:textColor="@android:color/black"
-                android:backgroundTint="@android:color/white"
+                android:backgroundTint="#D3D3D3"
                 android:padding="3dp"
                 android:layout_margin="1dp"/>
 
@@ -91,7 +91,7 @@
                 android:text="7회"
                 android:textSize="14sp"
                 android:textColor="@android:color/black"
-                android:backgroundTint="@android:color/white"
+                android:backgroundTint="#D3D3D3"
                 android:padding="3dp"
                 android:layout_margin="1dp"/>
 
@@ -102,7 +102,7 @@
                 android:text="8회"
                 android:textSize="14sp"
                 android:textColor="@android:color/black"
-                android:backgroundTint="@android:color/white"
+                android:backgroundTint="#D3D3D3"
                 android:padding="3dp"
                 android:layout_margin="1dp"/>
 
@@ -113,7 +113,7 @@
                 android:text="9회"
                 android:textSize="14sp"
                 android:textColor="@android:color/black"
-                android:backgroundTint="@android:color/white"
+                android:backgroundTint="#D3D3D3"
                 android:padding="3dp"
                 android:layout_margin="1dp"/>
         </LinearLayout>
@@ -134,7 +134,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@android:color/black"
-            android:textSize="16sp"
+            android:textSize="20sp"
             android:background="@android:color/white" />
     </ScrollView>
 

@@ -1,13 +1,17 @@
+import android.graphics.Color
+import android.graphics.Typeface
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
+import android.text.SpannableStringBuilder
+import android.text.style.ForegroundColorSpan
 import android.text.style.RelativeSizeSpan
 import android.text.style.StyleSpan
-import android.text.SpannableStringBuilder
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat // ContextCompat import 추가
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.baseballapp.ApiObject
@@ -80,7 +84,6 @@ class ChatingFragment : Fragment() {
             fetchMatchDetails(teamName, matchDate)
         }
 
-        // 이닝 버튼 클릭 리스너 설정
         setInningButtonListeners()
     }
 
@@ -126,7 +129,6 @@ class ChatingFragment : Fragment() {
         val stringBuilder = SpannableStringBuilder()
 
         inning?.details?.forEach { detail ->
-            // |를 기준으로 줄바꿈
             val detailParts = detail.split("|")
 
             detailParts.forEachIndexed { index, part ->
@@ -134,7 +136,7 @@ class ChatingFragment : Fragment() {
                     // 공격 시작 문구를 더 큰 글씨로 볼드체로 설정
                     val spannableString = SpannableString(part.trim() + "\n")
                     spannableString.setSpan(
-                        StyleSpan(android.graphics.Typeface.BOLD),
+                        StyleSpan(Typeface.BOLD),
                         0, spannableString.length,
                         Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
                     )
@@ -144,14 +146,40 @@ class ChatingFragment : Fragment() {
                         Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
                     )
                     stringBuilder.append(spannableString)
+                } else if (part.contains("타자")) {
+                    // 타자 문구를 빨간색으로 볼드체로 설정
+                    val spannableString = SpannableString(part.trim() + "\n")
+                    spannableString.setSpan(
+                        ForegroundColorSpan(Color.RED),
+                        0, spannableString.length,
+                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                    )
+                    spannableString.setSpan(
+                        StyleSpan(Typeface.BOLD),
+                        0, spannableString.length,
+                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                    )
+                    stringBuilder.append(spannableString)
+                    stringBuilder.append("\n") // 줄 간격을 넓히기 위해 빈 줄 추가
+                } else if (part.contains(":")) {
+                    // 결과 문구를 colors.xml에 정의된 darkblue로 설정
+                    val darkBlueColor = ContextCompat.getColor(requireContext(), R.color.darkblue)
+                    val resultStartIndex = part.indexOf(":") + 1
+                    val resultText = part.substring(resultStartIndex).trim()
+                    if (resultText.isNotEmpty()) {
+                        val spannableString = SpannableString(part.trim() + "\n")
+                        spannableString.setSpan(
+                            ForegroundColorSpan(darkBlueColor),
+                            resultStartIndex, spannableString.length,
+                            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                        )
+                        stringBuilder.append(spannableString)
+                    } else {
+                        stringBuilder.append(part.trim() + "\n")
+                    }
                 } else {
                     stringBuilder.append(part.trim() + "\n")
                 }
-            }
-
-            // 선수 이름이 포함된 줄에는 간격을 넓게 설정
-            if (detail.contains("타자")) {
-                stringBuilder.append("\n") // 줄 간격을 넓히기 위해 빈 줄 추가
             }
         }
 

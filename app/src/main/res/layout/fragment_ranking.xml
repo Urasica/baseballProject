@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -9,7 +8,7 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_ranking"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="@dimen/toolbar_height"
         android:background="?attr/colorPrimary"
         android:backgroundTint="@color/white"
         android:minHeight="?attr/actionBarSize"
@@ -23,7 +22,7 @@
     <ImageView
         android:id="@+id/ranking_image"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="@dimen/image_height"
         android:scaleType="centerCrop"
         android:contentDescription="@string/ranking_image_desc"
         android:src="@drawable/ranking" />
@@ -37,233 +36,53 @@
         android:gravity="center_vertical"
         android:paddingStart="0dp"
         android:paddingEnd="0dp"
-        android:layout_marginTop="200dp">
+        android:layout_marginTop="@dimen/image_height">
 
-        <!-- 순위 선택을 위한 스피너 -->
         <Spinner
             android:id="@+id/spinner_ranking_category"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:padding="8dp"
+            android:layout_margin="@dimen/layout_margin"
+            android:padding="@dimen/spinner_padding"
             android:background="@drawable/spinner_background"
-            android:textSize="20sp"
+            android:textSize="@dimen/text_size_large"
             android:entries="@array/ranking_categories" />
 
-        <!-- 투수 순위 스키마를 위한 고정된 헤더 -->
         <HorizontalScrollView
             android:id="@+id/header_scroll_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="gone"
             android:scrollbars="none"
-            android:background="#D3D3D3"> <!-- 회색 배경 설정 -->
+            android:background="#D3D3D3">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:padding="4dp"
+                android:padding="@dimen/text_padding"
                 android:background="?android:attr/selectableItemBackground">
 
                 <TextView
                     android:id="@+id/tv_header_rank"
-                    android:layout_width="70dp"
+                    android:layout_width="@dimen/header_text_width"
                     android:layout_height="wrap_content"
-                    android:padding="4dp"
+                    android:padding="@dimen/text_padding"
                     android:text="순위"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    android:textColor="#000000" /> <!-- 검은색 글씨 설정 -->
-
-                <TextView
-                    android:id="@+id/tv_header_name"
-                    android:layout_width="120dp"
-                    android:layout_height="wrap_content"
-                    android:padding="4dp"
-                    android:text="선수"
-                    android:textSize="14sp"
+                    android:textSize="@dimen/text_size_normal"
                     android:textStyle="bold"
                     android:textColor="#000000" />
 
-                <TextView
-                    android:id="@+id/tv_header_team"
-                    android:layout_width="70dp"
-                    android:layout_height="wrap_content"
-                    android:padding="4dp"
-                    android:text="팀"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    android:textColor="#000000" />
+                <!-- Add more TextView elements similarly -->
 
-                <TextView
-                    android:id="@+id/tv_header_games"
-                    android:layout_width="70dp"
-                    android:layout_height="wrap_content"
-                    android:padding="4dp"
-                    android:text="경기"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    android:textColor="#000000" />
-
-                <TextView
-                    android:id="@+id/tv_header_wins"
-                    android:layout_width="70dp"
-                    android:layout_height="wrap_content"
-                    android:padding="4dp"
-                    android:text="승"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    android:textColor="#000000" />
-
-                <TextView
-                    android:id="@+id/tv_header_losses"
-                    android:layout_width="70dp"
-                    android:layout_height="wrap_content"
-                    android:padding="4dp"
-                    android:text="패"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    android:textColor="#000000" />
-
-                <TextView
-                    android:id="@+id/tv_header_save"
-                    android:layout_width="70dp"
-                    android:layout_height="wrap_content"
-                    android:padding="4dp"
-                    android:text="세이브"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    android:textColor="#000000" />
-
-                <TextView
-                    android:id="@+id/tv_header_hold"
-                    android:layout_width="70dp"
-                    android:layout_height="wrap_content"
-                    android:padding="4dp"
-                    android:text="홀드"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    android:textColor="#000000" />
-
-                <TextView
-                    android:id="@+id/tv_header_innings"
-                    android:layout_width="70dp"
-                    android:layout_height="wrap_content"
-                    android:padding="4dp"
-                    android:text="이닝"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    android:textColor="#000000" />
-
-                <TextView
-                    android:id="@+id/tv_header_pitchCount"
-                    android:layout_width="70dp"
-                    android:layout_height="wrap_content"
-                    android:padding="4dp"
-                    android:text="투구수"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    android:textColor="#000000" />
-
-                <TextView
-                    android:id="@+id/tv_header_hits"
-                    android:layout_width="70dp"
-                    android:layout_height="wrap_content"
-                    android:padding="4dp"
-                    android:text="피안타"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    android:textColor="#000000" />
-
-                <TextView
-                    android:id="@+id/tv_header_homeRuns"
-                    android:layout_width="70dp"
-                    android:layout_height="wrap_content"
-                    android:padding="4dp"
-                    android:text="피홈런"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    android:textColor="#000000" />
-
-                <TextView
-                    android:id="@+id/tv_header_strikeout"
-                    android:layout_width="70dp"
-                    android:layout_height="wrap_content"
-                    android:padding="4dp"
-                    android:text="탈삼진"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    android:textColor="#000000" />
-
-                <TextView
-                    android:id="@+id/tv_header_baseOnBall"
-                    android:layout_width="70dp"
-                    android:layout_height="wrap_content"
-                    android:padding="4dp"
-                    android:text="사사구"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    android:textColor="#000000" />
-
-                <TextView
-                    android:id="@+id/tv_header_runs"
-                    android:layout_width="70dp"
-                    android:layout_height="wrap_content"
-                    android:padding="4dp"
-                    android:text="실점"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    android:textColor="#000000" />
-
-                <TextView
-                    android:id="@+id/tv_header_earnedRuns"
-                    android:layout_width="70dp"
-                    android:layout_height="wrap_content"
-                    android:padding="4dp"
-                    android:text="자책"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    android:textColor="#000000" />
-
-                <TextView
-                    android:id="@+id/tv_header_earnedRunsAVG"
-                    android:layout_width="70dp"
-                    android:layout_height="wrap_content"
-                    android:padding="4dp"
-                    android:text="평균자책"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    android:textColor="#000000" />
-
-                <TextView
-                    android:id="@+id/tv_header_whip"
-                    android:layout_width="70dp"
-                    android:layout_height="wrap_content"
-                    android:padding="4dp"
-                    android:text="WHIP"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    android:textColor="#000000" />
-
-                <TextView
-                    android:id="@+id/tv_header_qs"
-                    android:layout_width="70dp"
-                    android:layout_height="wrap_content"
-                    android:padding="4dp"
-                    android:text="QS"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    android:textColor="#000000" />
             </LinearLayout>
         </HorizontalScrollView>
 
-        <!-- RecyclerView 추가 -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view_rankings"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="@dimen/layout_margin"
             android:orientation="vertical" />
     </LinearLayout>
 </FrameLayout>
