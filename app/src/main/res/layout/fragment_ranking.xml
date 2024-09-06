@@ -22,7 +22,7 @@
     <ImageView
         android:id="@+id/ranking_image"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/image_height"
+        android:layout_height="250dp"
         android:scaleType="centerCrop"
         android:contentDescription="@string/ranking_image_desc"
         android:src="@drawable/ranking" />
@@ -30,38 +30,40 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:paddingTop="0dp"
-        android:paddingBottom="0dp"
+        android:layout_marginTop="250dp"
         android:gravity="center_vertical"
+        android:orientation="vertical"
         android:paddingStart="0dp"
+        android:paddingTop="0dp"
         android:paddingEnd="0dp"
-        android:layout_marginTop="@dimen/image_height">
+        android:paddingBottom="0dp">
 
         <Spinner
+
             android:id="@+id/spinner_ranking_category"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/layout_margin"
-            android:padding="@dimen/spinner_padding"
+            android:layout_marginTop="100dp"
             android:background="@drawable/spinner_background"
-            android:textSize="@dimen/text_size_large"
-            android:entries="@array/ranking_categories" />
+            android:entries="@array/ranking_categories"
+            android:padding="@dimen/spinner_padding"
+            android:textSize="25dp" />
 
         <HorizontalScrollView
             android:id="@+id/header_scroll_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="gone"
+            android:background="#D3D3D3"
             android:scrollbars="none"
-            android:background="#D3D3D3">
+            android:visibility="gone">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground"
                 android:orientation="horizontal"
-                android:padding="@dimen/text_padding"
-                android:background="?android:attr/selectableItemBackground">
+                android:padding="@dimen/text_padding">
 
                 <TextView
                     android:id="@+id/tv_header_rank"
@@ -69,11 +71,10 @@
                     android:layout_height="wrap_content"
                     android:padding="@dimen/text_padding"
                     android:text="순위"
+                    android:textColor="#000000"
                     android:textSize="@dimen/text_size_normal"
-                    android:textStyle="bold"
-                    android:textColor="#000000" />
+                    android:textStyle="bold" />
 
-                <!-- Add more TextView elements similarly -->
 
             </LinearLayout>
         </HorizontalScrollView>
@@ -82,7 +83,7 @@
             android:id="@+id/recycler_view_rankings"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/layout_margin"
+            android:layout_marginTop="8dp"
             android:orientation="vertical" />
     </LinearLayout>
 </FrameLayout>

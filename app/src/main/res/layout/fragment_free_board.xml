@@ -7,9 +7,10 @@
     <!-- 게시글 목록 헤더 -->
     <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:stretchColumns="1"
-        android:background="#cccccc">
+        android:background="@color/navy"
+        android:gravity="center_vertical">
 
         <TableRow>
             <TextView
@@ -17,39 +18,64 @@
                 android:layout_height="wrap_content"
                 android:text="작성자"
                 android:padding="4dp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:fontFamily="@font/kbo_bold"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:gravity="center_vertical"
+                />
+
+
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:layout_weight="3.5"
-                android:text="제목"
                 android:gravity="center"
+                android:textSize="20sp"
                 android:padding="4dp"
-                android:textStyle="bold" />
+                android:text="제목"
+                android:textStyle="bold"
+                android:fontFamily="@font/kbo_bold"
+                android:textColor="#FFFFFF"
+                />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.2"
                 android:text="작성일"
                 android:gravity="center"
+                android:textSize="20sp"
                 android:padding="4dp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:fontFamily="@font/kbo_bold"
+                android:textColor="#FFFFFF"
+                android:layout_marginRight="15dp"/>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.8"
                 android:text="댓글"
                 android:gravity="right"
+                android:textSize="20sp"
                 android:padding="4dp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:fontFamily="@font/kbo_bold"
+                android:textColor="#FFFFFF"
+                android:layout_marginRight="15dp"/>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.8"
                 android:text="추천"
+                android:textSize="20sp"
                 android:gravity="right"
                 android:padding="4dp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:fontFamily="@font/kbo_bold"
+                android:textColor="#FFFFFF"
+                android:layout_marginRight="18dp"/>
         </TableRow>
     </TableLayout>
 
@@ -58,8 +84,8 @@
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="600dp"
-    android:padding="8dp"
-    android:layout_weight="1" />
+        android:padding="8dp"
+        android:layout_weight="1" />
 
     <!-- 페이지 번호를 표시하는 레이아웃 -->
     <LinearLayout

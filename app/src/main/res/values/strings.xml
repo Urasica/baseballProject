@@ -20,6 +20,7 @@
     </string-array>
 
     <string-array name="ranking_categories">
+
         <item>팀순위</item>
         <item>타자 주요순위</item>
         <item>투수 주요순위</item>

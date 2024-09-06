@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:padding="4dp"
             android:text="순위"
-            android:textSize="14sp"
+            android:textSize="20sp"
             android:textColor="#000000" />
 
         <TextView
@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:padding="4dp"
             android:text="선수"
-            android:textSize="14sp"
+            android:textSize="20sp"
             android:textColor="#000000" />
 
         <TextView
@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:padding="4dp"
             android:text="팀"
-            android:textSize="14sp"
+            android:textSize="20sp"
             android:textColor="#000000" />
 
         <TextView
@@ -45,7 +45,7 @@
             android:layout_height="wrap_content"
             android:padding="4dp"
             android:text="경기"
-            android:textSize="14sp"
+            android:textSize="20sp"
             android:textColor="#000000" />
 
         <TextView
@@ -54,7 +54,7 @@
             android:layout_height="wrap_content"
             android:padding="4dp"
             android:text="승"
-            android:textSize="14sp"
+            android:textSize="20sp"
             android:textColor="#000000" />
 
         <TextView
@@ -63,7 +63,7 @@
             android:layout_height="wrap_content"
             android:padding="4dp"
             android:text="패"
-            android:textSize="14sp"
+            android:textSize="20sp"
             android:textColor="#000000" />
 
         <TextView
@@ -72,7 +72,7 @@
             android:layout_height="wrap_content"
             android:padding="4dp"
             android:text="세이브"
-            android:textSize="14sp"
+            android:textSize="20sp"
             android:textColor="#000000" />
 
         <TextView
@@ -81,16 +81,16 @@
             android:layout_height="wrap_content"
             android:padding="4dp"
             android:text="홀드"
-            android:textSize="14sp"
+            android:textSize="20sp"
             android:textColor="#000000" />
 
         <TextView
             android:id="@+id/tv_innings"
-            android:layout_width="70dp"
+            android:layout_width="90dp"
             android:layout_height="wrap_content"
             android:padding="4dp"
             android:text="이닝"
-            android:textSize="14sp"
+            android:textSize="20sp"
             android:textColor="#000000" />
 
         <TextView
@@ -99,7 +99,7 @@
             android:layout_height="wrap_content"
             android:padding="4dp"
             android:text="투구수"
-            android:textSize="14sp"
+            android:textSize="20sp"
             android:textColor="#000000" />
 
         <TextView
@@ -108,7 +108,7 @@
             android:layout_height="wrap_content"
             android:padding="4dp"
             android:text="피안타"
-            android:textSize="14sp"
+            android:textSize="20sp"
             android:textColor="#000000" />
 
         <TextView
@@ -117,7 +117,7 @@
             android:layout_height="wrap_content"
             android:padding="4dp"
             android:text="피홈런"
-            android:textSize="14sp"
+            android:textSize="20sp"
             android:textColor="#000000" />
 
         <TextView
@@ -126,7 +126,7 @@
             android:layout_height="wrap_content"
             android:padding="4dp"
             android:text="탈삼진"
-            android:textSize="14sp"
+            android:textSize="20sp"
             android:textColor="#000000" />
 
         <TextView
@@ -135,7 +135,7 @@
             android:layout_height="wrap_content"
             android:padding="4dp"
             android:text="사사구"
-            android:textSize="14sp"
+            android:textSize="20sp"
             android:textColor="#000000" />
 
         <TextView
@@ -144,7 +144,7 @@
             android:layout_height="wrap_content"
             android:padding="4dp"
             android:text="실점"
-            android:textSize="14sp"
+            android:textSize="20sp"
             android:textColor="#000000" />
 
         <TextView
@@ -153,7 +153,7 @@
             android:layout_height="wrap_content"
             android:padding="4dp"
             android:text="자책"
-            android:textSize="14sp"
+            android:textSize="20sp"
             android:textColor="#000000" />
 
         <TextView
@@ -162,7 +162,7 @@
             android:layout_height="wrap_content"
             android:padding="4dp"
             android:text="평균자책"
-            android:textSize="14sp"
+            android:textSize="20sp"
             android:textColor="#000000" />
 
         <TextView
@@ -171,7 +171,7 @@
             android:layout_height="wrap_content"
             android:padding="4dp"
             android:text="WHIP"
-            android:textSize="14sp"
+            android:textSize="20sp"
             android:textColor="#000000" />
 
         <TextView
@@ -180,7 +180,7 @@
             android:layout_height="wrap_content"
             android:padding="4dp"
             android:text="QS"
-            android:textSize="14sp"
+            android:textSize="20sp"
             android:textColor="#000000" />
     </LinearLayout>
 </HorizontalScrollView>

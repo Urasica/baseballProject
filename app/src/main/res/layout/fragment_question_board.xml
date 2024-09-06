@@ -7,9 +7,10 @@
 
     <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:stretchColumns="1"
-        android:background="#cccccc">
+        android:background="@color/navy"
+        android:gravity="center_vertical">
 
         <TableRow>
             <TextView
@@ -17,7 +18,10 @@
                 android:layout_height="wrap_content"
                 android:text="작성자"
                 android:padding="4dp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:fontFamily="@font/kbo_bold"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -25,7 +29,10 @@
                 android:text="제목"
                 android:gravity="center"
                 android:padding="4dp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:fontFamily="@font/kbo_bold"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -33,7 +40,11 @@
                 android:text="작성일"
                 android:gravity="center"
                 android:padding="4dp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:fontFamily="@font/kbo_bold"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:layout_marginRight="15dp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -41,7 +52,11 @@
                 android:text="댓글"
                 android:gravity="right"
                 android:padding="4dp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:fontFamily="@font/kbo_bold"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:layout_marginRight="15dp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -49,7 +64,11 @@
                 android:text="추천"
                 android:gravity="right"
                 android:padding="4dp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:fontFamily="@font/kbo_bold"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:layout_marginRight="18dp"/>
         </TableRow>
     </TableLayout>
 

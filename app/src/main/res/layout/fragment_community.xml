@@ -21,7 +21,8 @@
             android:textSize="18dp"
             android:textColor="@color/black"
             android:textStyle="bold"
-            android:backgroundTint="@color/white" />
+            android:backgroundTint="@color/white"
+            android:fontFamily="@font/kbo_bold"/>
 
         <Button
             android:id="@+id/questionBoardButton"
@@ -32,7 +33,9 @@
             android:text="질문"
             android:textStyle="bold"
             android:textColor="@color/black"
-            android:backgroundTint="@color/white" />
+            android:backgroundTint="@color/white"
+            android:fontFamily="@font/kbo_bold"
+            />
 
         <Button
             android:id="@+id/tradeBoardButton"
@@ -43,7 +46,8 @@
             android:textSize="18dp"
             android:textStyle="bold"
             android:textColor="@color/black"
-            android:backgroundTint="@color/white" />
+            android:backgroundTint="@color/white"
+            android:fontFamily="@font/kbo_bold"/>
     </LinearLayout>
 
     <!-- 검색창 -->

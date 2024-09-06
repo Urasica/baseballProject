@@ -1,186 +1,224 @@
 <?xml version="1.0" encoding="utf-8"?>
 <HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="60sp"
     android:scrollbars="none"
-    android:background="#D3D3D3"> <!-- 회색 배경 설정 -->
+    android:background="@color/navy">
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="horizontal"
         android:padding="4dp"
         android:background="?android:attr/selectableItemBackground">
 
         <TextView
             android:layout_width="70dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:padding="4dp"
             android:text="순위"
-            android:textSize="14sp"
+            android:textSize="20sp"
             android:textStyle="bold"
-            android:textColor="#000000" /> <!-- 검은색 글씨 설정 -->
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/kbo_medium"
+            android:gravity="center" />
 
         <TextView
             android:layout_width="120dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:padding="4dp"
             android:text="선수"
-            android:textSize="14sp"
+            android:textSize="20sp"
             android:textStyle="bold"
-            android:textColor="#000000" />
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/kbo_medium"
+            android:gravity="center" />
 
         <TextView
             android:layout_width="70dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:padding="4dp"
             android:text="팀"
-            android:textSize="14sp"
+            android:textSize="20sp"
             android:textStyle="bold"
-            android:textColor="#000000" />
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/kbo_medium"
+            android:gravity="center" />
 
         <TextView
             android:layout_width="70dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:padding="4dp"
             android:text="경기"
-            android:textSize="14sp"
+            android:textSize="20sp"
             android:textStyle="bold"
-            android:textColor="#000000" />
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/kbo_medium"
+            android:gravity="center" />
 
         <TextView
             android:layout_width="70dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:padding="4dp"
             android:text="승"
-            android:textSize="14sp"
+            android:textSize="20sp"
             android:textStyle="bold"
-            android:textColor="#000000" />
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/kbo_medium"
+            android:gravity="center" />
 
         <TextView
             android:layout_width="70dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:padding="4dp"
             android:text="패"
-            android:textSize="14sp"
+            android:textSize="20sp"
             android:textStyle="bold"
-            android:textColor="#000000" />
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/kbo_medium"
+            android:gravity="center" />
 
         <TextView
             android:layout_width="70dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:padding="4dp"
             android:text="세이브"
-            android:textSize="14sp"
+            android:textSize="20sp"
             android:textStyle="bold"
-            android:textColor="#000000" />
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/kbo_medium"
+            android:gravity="center" />
 
         <TextView
             android:layout_width="70dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:padding="4dp"
             android:text="홀드"
-            android:textSize="14sp"
+            android:textSize="20sp"
             android:textStyle="bold"
-            android:textColor="#000000" />
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/kbo_medium"
+            android:gravity="center" />
 
         <TextView
             android:layout_width="70dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:padding="4dp"
             android:text="이닝"
-            android:textSize="14sp"
+            android:textSize="20sp"
             android:textStyle="bold"
-            android:textColor="#000000" />
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/kbo_medium"
+            android:gravity="center" />
 
         <TextView
             android:layout_width="70dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:padding="4dp"
             android:text="투구수"
-            android:textSize="14sp"
+            android:textSize="20sp"
             android:textStyle="bold"
-            android:textColor="#000000" />
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/kbo_medium"
+            android:gravity="center" />
 
         <TextView
             android:layout_width="70dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:padding="4dp"
             android:text="피안타"
-            android:textSize="14sp"
+            android:textSize="20sp"
             android:textStyle="bold"
-            android:textColor="#000000" />
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/kbo_medium"
+            android:gravity="center" />
 
         <TextView
             android:layout_width="70dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:padding="4dp"
             android:text="피홈런"
-            android:textSize="14sp"
+            android:textSize="20sp"
             android:textStyle="bold"
-            android:textColor="#000000" />
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/kbo_medium"
+            android:gravity="center" />
 
         <TextView
             android:layout_width="70dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:padding="4dp"
             android:text="탈삼진"
-            android:textSize="14sp"
+            android:textSize="20sp"
             android:textStyle="bold"
-            android:textColor="#000000" />
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/kbo_medium"
+            android:gravity="center" />
 
         <TextView
             android:layout_width="70dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:padding="4dp"
             android:text="사사구"
-            android:textSize="14sp"
+            android:textSize="20sp"
             android:textStyle="bold"
-            android:textColor="#000000" />
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/kbo_medium"
+            android:gravity="center" />
 
         <TextView
             android:layout_width="70dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:padding="4dp"
             android:text="실점"
-            android:textSize="14sp"
+            android:textSize="20sp"
             android:textStyle="bold"
-            android:textColor="#000000" />
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/kbo_medium"
+            android:gravity="center" />
 
         <TextView
             android:layout_width="70dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:padding="4dp"
             android:text="자책"
-            android:textSize="14sp"
+            android:textSize="20sp"
             android:textStyle="bold"
-            android:textColor="#000000" />
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/kbo_medium"
+            android:gravity="center" />
 
         <TextView
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
             android:padding="4dp"
             android:text="평균자책"
-            android:textSize="14sp"
+            android:textSize="20sp"
             android:textStyle="bold"
-            android:textColor="#000000" />
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/kbo_medium"
+            android:gravity="center" />
 
         <TextView
             android:layout_width="70dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:padding="4dp"
             android:text="WHIP"
-            android:textSize="14sp"
+            android:textSize="20sp"
             android:textStyle="bold"
-            android:textColor="#000000" />
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/kbo_medium"
+            android:gravity="center" />
 
         <TextView
             android:layout_width="70dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:padding="4dp"
             android:text="QS"
-            android:textSize="14sp"
+            android:textSize="20sp"
             android:textStyle="bold"
-            android:textColor="#000000" />
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/kbo_medium"
+            android:gravity="center" />
     </LinearLayout>
 </HorizontalScrollView>
