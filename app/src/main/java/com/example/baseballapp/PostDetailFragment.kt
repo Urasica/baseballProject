@@ -1,5 +1,6 @@
 package com.example.baseballapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,12 +10,13 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.baseballapp.databinding.FragmentPostDetailBinding
+import com.example.login.LoginService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class PostDetailFragment : Fragment() {
-
+    private val loginService by lazy { LoginService(requireContext()) }
     private var _binding: FragmentPostDetailBinding? = null
     private val binding get() = _binding!!
     private lateinit var post: BoardData
@@ -55,16 +57,32 @@ class PostDetailFragment : Fragment() {
         fetchComments(post.id.toLong())
 
         binding.btnSubmitComment.setOnClickListener {
-            val commentContent = binding.etComment.text.toString()
-            if (commentContent.isNotEmpty()) {
-                submitComment(commentContent)
-            } else {
-                Toast.makeText(context, "댓글을 입력해주세요.", Toast.LENGTH_SHORT).show()
+            loginService.checkToken { isValid ->
+                if (isValid) {
+                    val commentContent = binding.etComment.text.toString()
+                    if (commentContent.isNotEmpty()) {
+                        submitComment(commentContent)
+                    } else {
+                        Toast.makeText(context, "댓글을 입력해주세요.", Toast.LENGTH_SHORT).show()
+                    }
+                } else {
+                    val intent = Intent(requireContext(), LoginActivity::class.java)
+                    startActivity(intent)
+                    requireActivity().finish()
+                }
             }
         }
 
         binding.btnDetailDelete.setOnClickListener {
-            deletePost(post.id.toLong())
+            loginService.checkToken { isValid ->
+                if (isValid) {
+                    deletePost(post.id.toLong())
+                } else {
+                    val intent = Intent(requireContext(), LoginActivity::class.java)
+                    startActivity(intent)
+                    requireActivity().finish()
+                }
+            }
         }
 
         binding.btnDetailUpvote.setOnClickListener {

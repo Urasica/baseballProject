@@ -2,46 +2,110 @@ package com.example.baseballapp
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.example.login.LoginService
+import com.example.login.saveToken
+import okhttp3.Call
+import okhttp3.Callback
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.RequestBody.Companion.toRequestBody
+import okhttp3.Response
+import org.json.JSONObject
+import java.io.IOException
 
 class LoginActivity : AppCompatActivity() {
 
+    private lateinit var editTextUsername: EditText
+    private lateinit var editTextPassword: EditText
+    private lateinit var buttonLogin: Button
+    private lateinit var loginService: LoginService
+    private lateinit var buttonSignUp: Button
+
+    private val TAG = "Login"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        setContentView(R.layout.login_main)
 
-        // XML에서 정의된 뷰 요소를 가져오기
-        val usernameEditText = findViewById<EditText>(R.id.editTextUsername)
-        val passwordEditText = findViewById<EditText>(R.id.editTextPassword)
-        val loginButton = findViewById<Button>(R.id.buttonLogin)
-        val signUpTextView = findViewById<TextView>(R.id.signUpTextView)
+        buttonSignUp = findViewById(R.id.buttonSignUp)
+        editTextUsername = findViewById(R.id.editTextUsername)
+        editTextPassword = findViewById(R.id.editTextPassword)
+        buttonLogin = findViewById(R.id.buttonLogin)
+        loginService = LoginService(this)
 
-        // 로그인 버튼 클릭 리스너 설정
-        loginButton.setOnClickListener {
-            val username = usernameEditText.text.toString()
-            val password = passwordEditText.text.toString()
-
-            if (validateLogin(username, password)) {
-                // 로그인 성공 시 MainActivity로 이동
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-                finish()
-            } else {
-                // 로그인 실패 시 처리 (예: 토스트 메시지 등)
-            }
+        buttonSignUp.setOnClickListener {
+            val intent = Intent(this, SignupActivity::class.java)
+            startActivity(intent)
         }
 
-        // 회원가입 텍스트 클릭 리스너 (추가 기능 구현 가능)
-        signUpTextView.setOnClickListener {
-            // 회원가입 화면으로 이동하는 코드 추가 가능
+        buttonLogin.setOnClickListener {
+            performLogin()
         }
     }
 
-    private fun validateLogin(username: String, password: String): Boolean {
-        // 임시로 모든 로그인 시도 성공으로 처리
-        return true
+    private fun performLogin() {
+        val username = editTextUsername.text.toString()
+        val password = editTextPassword.text.toString()
+
+        val client = OkHttpClient()
+        val json = JSONObject().apply {
+            put("username", username)
+            put("password", password)
+        }
+        val requestBody =
+            json.toString().toRequestBody("application/json; charset=utf-8".toMediaTypeOrNull())
+
+        val request = Request.Builder()
+            .url("http://35.216.0.159:8080/auth/login")
+            .post(requestBody)
+            .build()
+
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                runOnUiThread {
+                    Toast.makeText(this@LoginActivity, "Login failed", Toast.LENGTH_SHORT).show()
+                    Log.e(TAG, "Login failed", e)
+                }
+            }
+
+            override fun onResponse(call: Call, response: Response) {
+                val responseBody = response.body?.string()
+                Log.d(TAG, "Response Code: ${response.code}")
+                Log.d(TAG, "Response Body: $responseBody")
+
+                if (response.isSuccessful) {
+                    val json = JSONObject(responseBody)
+                    val token = json.getString("token")
+
+                    // JWT 토큰을 SharedPreferences에 저장하는 코드
+                    saveToken(this@LoginActivity, token)
+
+                    runOnUiThread {
+                        Toast.makeText(
+                            this@LoginActivity,
+                            "$username 로그인 성공하셨습니다.",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                    }
+                } else {
+                    runOnUiThread {
+                        Toast.makeText(
+                            this@LoginActivity,
+                            "Invalid username or password",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+            }
+        })
     }
 }
