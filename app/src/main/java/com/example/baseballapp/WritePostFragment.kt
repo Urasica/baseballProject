@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import com.example.baseballapp.ApiObject
 import com.example.baseballapp.Post
 import com.example.baseballapp.databinding.FragmentWritePostBinding
+import com.example.login.TokenManager
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -20,16 +21,27 @@ class WritePostFragment : Fragment() {
     private var _binding: FragmentWritePostBinding? = null
     private val binding get() = _binding!!
 
+    private lateinit var tokenManager: TokenManager
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentWritePostBinding.inflate(inflater, container, false)
+        tokenManager = TokenManager(requireContext()) // TokenManager 초기화
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // 저장된 토큰을 ApiObject에 설정
+        val token = tokenManager.getToken()
+        if (token != null) {
+            ApiObject.setToken(token)
+        } else {
+            Toast.makeText(context, "토큰이 존재하지 않습니다. 로그인이 필요합니다.", Toast.LENGTH_SHORT).show()
+        }
 
         binding.submitPostButton.setOnClickListener {
             val author = binding.authorId.text.toString()
