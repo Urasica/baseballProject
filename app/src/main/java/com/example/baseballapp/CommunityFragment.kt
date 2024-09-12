@@ -13,7 +13,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.baseballapp.databinding.FragmentCommunityBinding
-import com.example.login.LoginService
 import com.example.yourapp.WritePostFragment
 import retrofit2.Call
 import retrofit2.Callback

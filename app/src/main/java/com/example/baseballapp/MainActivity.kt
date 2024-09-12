@@ -11,7 +11,6 @@ import com.google.android.material.navigation.NavigationView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import android.widget.Button
 import android.widget.TextView
-import com.example.login.LoginService
 import com.example.login.TokenManager
 
 class MainActivity : AppCompatActivity() {
@@ -97,7 +96,7 @@ class MainActivity : AppCompatActivity() {
                     val token = tokenManager.getToken()  // TokenManager 사용
                     if (token != null) {
                         // 로그인 상태
-                        val username = loginService.getUsernameFromToken(token)  // 유저네임 추출
+                        val username = loginService.getUsername() // 유저네임 추출
                         userNameTextView.text = username
                         loginButton.text = "Logout"
                         loginButton.setOnClickListener {
