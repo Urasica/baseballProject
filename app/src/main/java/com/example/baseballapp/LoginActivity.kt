@@ -7,7 +7,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.login.saveToken
+import com.example.login.TokenManager
 import okhttp3.Call
 import okhttp3.Callback
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -25,6 +25,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var buttonLogin: Button
     private lateinit var loginService: LoginService
     private lateinit var buttonSignUp: Button
+    private lateinit var tokenManager: TokenManager // TokenManager 객체 추가
 
     private val TAG = "Login"
 
@@ -37,6 +38,7 @@ class LoginActivity : AppCompatActivity() {
         editTextPassword = findViewById(R.id.editTextPassword)
         buttonLogin = findViewById(R.id.buttonLogin)
         loginService = LoginService(this)
+        tokenManager = TokenManager(this) // TokenManager 초기화
 
         buttonSignUp.setOnClickListener {
             val intent = Intent(this, SignupActivity::class.java)
@@ -82,8 +84,9 @@ class LoginActivity : AppCompatActivity() {
                     val json = JSONObject(responseBody)
                     val token = json.getString("token")
 
-                    // JWT 토큰을 SharedPreferences에 저장하는 코드
-                    saveToken(this@LoginActivity, token)
+                    // JWT 토큰을 SharedPreferences에 저장
+                    tokenManager.saveToken(token)
+                    tokenManager.saveUsername(username) // 사용자 이름도 저장
 
                     runOnUiThread {
                         Toast.makeText(

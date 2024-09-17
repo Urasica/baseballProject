@@ -1,4 +1,4 @@
-package com.example.baseballapp
+package com.example.baseballapp.community
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,6 +9,9 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.baseballapp.ApiObject
+import com.example.baseballapp.PagedBoardResponse
+import com.example.baseballapp.R
 import com.example.baseballapp.databinding.FragmentFreeBoardBinding
 import retrofit2.Call
 import retrofit2.Callback

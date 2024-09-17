@@ -1,4 +1,4 @@
-package com.example.baseballapp
+package com.example.baseballapp.community
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,14 +7,17 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.baseballapp.databinding.FragmentQuestionBoardBinding
+import com.example.baseballapp.ApiObject
+import com.example.baseballapp.PagedBoardResponse
+import com.example.baseballapp.R
+import com.example.baseballapp.databinding.FragmentTradeBoardBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class QuestionBoardFragment : Fragment() {
+class TradeBoardFragment : Fragment() {
 
-    private var _binding: FragmentQuestionBoardBinding? = null
+    private var _binding: FragmentTradeBoardBinding? = null
     private val binding get() = _binding!!
     private lateinit var postAdapter: PostAdapter
     private var currentPage = 0
@@ -24,7 +27,7 @@ class QuestionBoardFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentQuestionBoardBinding.inflate(inflater, container, false)
+        _binding = FragmentTradeBoardBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -44,7 +47,7 @@ class QuestionBoardFragment : Fragment() {
     }
 
     private fun fetchPosts() {
-        ApiObject.getRetrofitService.getBoardsByPage("질문게시판", currentPage, pageSize).enqueue(object : Callback<PagedBoardResponse> {
+        ApiObject.getRetrofitService.getBoardsByPage("중고거래게시판", currentPage, pageSize).enqueue(object : Callback<PagedBoardResponse> {
             override fun onResponse(call: Call<PagedBoardResponse>, response: Response<PagedBoardResponse>) {
                 if (response.isSuccessful) {
                     response.body()?.let { pagedResponse ->
@@ -63,7 +66,7 @@ class QuestionBoardFragment : Fragment() {
     }
 
     fun performSearch(query: String) {
-        ApiObject.getRetrofitService.searchBoards(query, "질문게시판", 0).enqueue(object : Callback<PagedBoardResponse> {
+        ApiObject.getRetrofitService.searchBoards(query, "중고거래게시판", 0).enqueue(object : Callback<PagedBoardResponse> {
             override fun onResponse(call: Call<PagedBoardResponse>, response: Response<PagedBoardResponse>) {
                 if (response.isSuccessful) {
                     response.body()?.let { pagedResponse ->

@@ -1,4 +1,4 @@
-package com.example.baseballapp
+package com.example.baseballapp.Ranking
 
 data class TeamRankData(
     val rank: Int,

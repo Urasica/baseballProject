@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
         android:allowBackup="true"
@@ -15,31 +16,28 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BaseballApp"
         tools:targetApi="31">
+        <meta-data
+            android:name="com.google.android.actions"
+            android:resource="@layout/custom_spinner_item" />
 
         <activity
             android:name=".Metaverse2Activity"
             android:exported="false" />
-
         <activity
             android:name=".Metaverse1Activity"
             android:exported="false"
             android:screenOrientation="landscape" />
-
-        <meta-data
-            android:name="com.google.android.actions"
-            android:resource="@layout/hitter_rank_header_item" />
-
         <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".LoginActivity" />
         <activity android:name=".SignupActivity" />
     </application>
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
 
 </manifest>

@@ -25,4 +25,17 @@ class TokenManager(context: Context) {
             apply()
         }
     }
+
+
+    fun getUsername(): String? {
+        return sharedPreferences.getString("username", null) // 저장된 사용자 이름 반환
+    }
+
+    // 사용자 이름 저장 메서드
+    fun saveUsername(username: String) {
+        with(sharedPreferences.edit()) {
+            putString("username", username)
+            apply()
+        }
+    }
 }

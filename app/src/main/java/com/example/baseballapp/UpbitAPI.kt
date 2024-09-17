@@ -1,5 +1,8 @@
 package com.example.baseballapp
 
+import com.example.baseballapp.Ranking.HitterRankData
+import com.example.baseballapp.Ranking.PitcherRankData
+import com.example.baseballapp.Ranking.TeamRankData
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.DELETE

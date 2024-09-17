@@ -1,4 +1,4 @@
-package com.example.baseballapp
+package com.example.baseballapp.community
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,7 +9,14 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.baseballapp.ApiObject
+import com.example.baseballapp.BoardData
+import com.example.baseballapp.CommentData
+import com.example.baseballapp.LoginActivity
+import com.example.baseballapp.LoginService
+import com.example.baseballapp.R
 import com.example.baseballapp.databinding.FragmentPostDetailBinding
+import com.example.login.TokenManager
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -20,6 +27,7 @@ class PostDetailFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var post: BoardData
     private lateinit var commentAdapter: CommentAdapter
+    private lateinit var tokenManager: TokenManager  // TokenManager 추가
 
     companion object {
         private const val ARG_POST = "post"
@@ -36,6 +44,7 @@ class PostDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentPostDetailBinding.inflate(inflater, container, false)
+        tokenManager = TokenManager(requireContext())  // TokenManager 초기화
         return binding.root
     }
 
@@ -59,8 +68,9 @@ class PostDetailFragment : Fragment() {
             loginService.checkToken { isValid ->
                 if (isValid) {
                     val commentContent = binding.etComment.text.toString()
+                    val author = tokenManager.getUsername() ?: "알 수 없는 사용자" // 사용자 이름 가져오기
                     if (commentContent.isNotEmpty()) {
-                        submitComment(commentContent)
+                        submitComment(author, commentContent)
                     } else {
                         Toast.makeText(context, "댓글을 입력해주세요.", Toast.LENGTH_SHORT).show()
                     }
@@ -131,8 +141,8 @@ class PostDetailFragment : Fragment() {
         }
     }
 
-    private fun submitComment(content: String) {
-        val newComment = CommentData(0, content, "사용자 이름", "2024-08-05T07:23:21.610Z", post.title)
+    private fun submitComment(author: String, content: String) {
+        val newComment = CommentData(0, content, author, "2024-08-05T07:23:21.610Z", post.title)
         ApiObject.getRetrofitService.submitComment(post.id.toLong(), newComment).enqueue(object : Callback<Void> {
             override fun onResponse(call: Call<Void>, response: Response<Void>) {
                 if (response.isSuccessful) {
@@ -148,12 +158,14 @@ class PostDetailFragment : Fragment() {
             }
         })
     }
+
     private fun updateCommentCountInCommunity(postId: Long) {
         val parentFragment = parentFragmentManager.findFragmentById(R.id.boardContainer)
         if (parentFragment is CommunityFragment) {
             parentFragment.updateCommentCountForPost(postId)
         }
     }
+
     private fun deletePost(postId: Long) {
         ApiObject.getRetrofitService.deletePost(postId).enqueue(object : Callback<Void> {
             override fun onResponse(call: Call<Void>, response: Response<Void>) {

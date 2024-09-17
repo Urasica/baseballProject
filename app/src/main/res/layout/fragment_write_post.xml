@@ -14,12 +14,6 @@
         android:entries="@array/board_array" />
 
     <EditText
-        android:id="@+id/authorId"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="사용자이름" />
-
-    <EditText
         android:id="@+id/postTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

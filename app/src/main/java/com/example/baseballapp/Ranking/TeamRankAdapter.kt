@@ -1,4 +1,4 @@
-package com.example.baseballapp
+package com.example.baseballapp.Ranking
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.baseballapp.R
 
 class TeamRankAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 

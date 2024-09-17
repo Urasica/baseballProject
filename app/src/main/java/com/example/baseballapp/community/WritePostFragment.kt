@@ -1,4 +1,4 @@
-package com.example.yourapp
+package com.example.baseballapp.community
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -44,15 +44,16 @@ class WritePostFragment : Fragment() {
         }
 
         binding.submitPostButton.setOnClickListener {
-            val author = binding.authorId.text.toString()
+            // 작성자 이름을 TokenManager에서 가져옴
+            val author = tokenManager.getUsername() ?: "알 수 없는 사용자"
             val title = binding.postTitle.text.toString()
             val content = binding.postContent.text.toString()
             val createdAt = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault()).format(Date())
             val updatedAt = createdAt
             val selectedBoardType = binding.boardSpinner.selectedItem.toString()
 
-            if (author.isEmpty() || title.isEmpty() || content.isEmpty()) {
-                Toast.makeText(context, "사용자 이름, 제목, 내용을 모두 입력해주세요.", Toast.LENGTH_SHORT).show()
+            if (title.isEmpty() || content.isEmpty()) {
+                Toast.makeText(context, "제목과 내용을 모두 입력해주세요.", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 

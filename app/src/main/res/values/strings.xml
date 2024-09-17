@@ -25,6 +25,9 @@
         <item>타자 주요순위</item>
         <item>투수 주요순위</item>
     </string-array>
+    <string name="third_rank_logo_desc">3위 팀 로고</string>
+    <string name="first_rank_logo_desc">1위 팀 로고</string>
+    <string name="second_rank_logo_desc">2위 팀 로고</string>
 
     <string name="write_post">글쓰기</string>
     <string name="navigation_drawer_open">Open drawer</string>

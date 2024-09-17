@@ -19,14 +19,95 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
-    <ImageView
-        android:id="@+id/ranking_image"
+    <!-- 로고를 가로로 배치할 LinearLayout -->
+    <LinearLayout
+        android:id="@+id/top_three_layout"
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        android:scaleType="centerCrop"
-        android:contentDescription="@string/ranking_image_desc"
-        android:src="@drawable/ranking" />
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@color/navy"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp">
 
+        <!-- 2위 팀 로고와 이름 -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/logo_second"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:contentDescription="@string/second_rank_logo_desc" />
+
+            <TextView
+                android:id="@+id/team_second"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="2위 팀"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:fontFamily="@font/kbo_bold" />
+        </LinearLayout>
+
+        <!-- 1위 팀 로고와 이름 -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp">
+
+            <ImageView
+                android:id="@+id/logo_first"
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:contentDescription="@string/first_rank_logo_desc" />
+
+            <TextView
+                android:id="@+id/team_first"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="1위 팀"
+                android:textColor="@android:color/white"
+                android:textSize="23sp"
+                android:fontFamily="@font/kbo_bold" />
+        </LinearLayout>
+
+        <!-- 3위 팀 로고와 이름 -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/logo_third"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:contentDescription="@string/third_rank_logo_desc" />
+
+            <TextView
+                android:id="@+id/team_third"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="3위 팀"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:fontFamily="@font/kbo_bold" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+    <!-- 기존 RecyclerView 및 다른 UI 요소는 그대로 유지 -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -39,12 +120,11 @@
         android:paddingBottom="0dp">
 
         <Spinner
-
             android:id="@+id/spinner_ranking_category"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/layout_margin"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="120dp"
             android:background="@drawable/spinner_background"
             android:entries="@array/ranking_categories"
             android:padding="@dimen/spinner_padding"
@@ -74,8 +154,6 @@
                     android:textColor="#000000"
                     android:textSize="@dimen/text_size_normal"
                     android:textStyle="bold" />
-
-
             </LinearLayout>
         </HorizontalScrollView>
 
