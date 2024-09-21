@@ -91,14 +91,19 @@
         android:layout_weight="1" />
 
     <!-- 글쓰기 버튼 -->
-    <ImageButton
+    <Button
         android:id="@+id/writePostButton"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="글쓰기"
+        android:textSize="18dp"
+        android:textColor="@android:color/white"
         android:layout_gravity="end|bottom"
-        android:background="@drawable/round_button"
-        android:contentDescription="@string/write_post"
-        android:scaleType="centerInside"
-        app:srcCompat="@drawable/pencil" />
+        android:layout_marginBottom="40dp"
+        android:layout_marginEnd="25dp"
+        android:backgroundTint="@color/navy"
+        android:padding="12dp"
+    />
+
+
 </LinearLayout>

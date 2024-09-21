@@ -1,0 +1,9 @@
+<!-- 팀순위에있는 스피너 버튼 -->
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:textSize="23sp"
+    android:padding="10dp"
+    android:textColor="#000000"
+    android:gravity="center"
+    android:fontFamily="@font/kbo_medium"/>
