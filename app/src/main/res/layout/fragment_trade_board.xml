@@ -81,9 +81,10 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="600dp"
+        android:layout_height="650dp"
         android:padding="8dp"
         android:layout_weight="1" />
+
 
     <!-- 페이지 번호 -->
     <LinearLayout

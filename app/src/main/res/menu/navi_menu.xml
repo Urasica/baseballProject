@@ -14,7 +14,8 @@
     <item
         android:id="@+id/InformationFragment"
         android:icon="@drawable/info"
-        android:title="팀 정보" />
+        android:title="팀 정보"
+        />
 
     <item
         android:id="@+id/CommunityFragment"

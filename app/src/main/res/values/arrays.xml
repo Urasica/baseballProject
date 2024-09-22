@@ -3,6 +3,6 @@
     <string-array name="board_array">
         <item>자유게시판</item>
         <item>질문게시판</item>
-        <item>중고거래게시판</item>
+        <item>나눔게시판</item>
     </string-array>
 </resources>

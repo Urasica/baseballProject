@@ -10,19 +10,20 @@
     <Spinner
         android:id="@+id/boardSpinner"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
+        android:textSize="50sp"
         android:entries="@array/board_array" />
 
     <EditText
         android:id="@+id/postTitle"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:hint="제목" />
 
     <EditText
         android:id="@+id/postContent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="300dp"
         android:hint="내용"
         android:inputType="textMultiLine"
         android:minLines="5" />
@@ -32,7 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="작성 완료"
-        android:backgroundTint="#1E90FF"
+        android:backgroundTint="@color/navy"
         android:textColor="@color/white"
         android:layout_gravity="end"
         android:layout_marginTop="16dp" />

@@ -4,10 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.baseballapp.ApiObject
 import com.example.baseballapp.Post
+import com.example.baseballapp.R
 import com.example.baseballapp.databinding.FragmentWritePostBinding
 import com.example.login.TokenManager
 import retrofit2.Call
@@ -35,13 +37,22 @@ class WritePostFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // 저장된 토큰을 ApiObject에 설정
+        // Token 설정 부분 유지
         val token = tokenManager.getToken()
         if (token != null) {
             ApiObject.setToken(token)
         } else {
             Toast.makeText(context, "토큰이 존재하지 않습니다. 로그인이 필요합니다.", Toast.LENGTH_SHORT).show()
         }
+
+        // Spinner에 custom_spinner_item 적용
+        val spinnerAdapter = ArrayAdapter.createFromResource(
+            requireContext(),
+            R.array.board_array,  // 스피너 항목 배열
+            R.layout.custom_spinner_item  // 커스텀 레이아웃 적용
+        )
+        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item) // 드롭다운 레이아웃 설정
+        binding.boardSpinner.adapter = spinnerAdapter  // 스피너에 어댑터 설정
 
         binding.submitPostButton.setOnClickListener {
             // 작성자 이름을 TokenManager에서 가져옴

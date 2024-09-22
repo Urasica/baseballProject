@@ -87,6 +87,7 @@
         android:padding="8dp"
         android:layout_weight="1" />
 
+
     <!-- 페이지 번호를 표시하는 레이아웃 -->
     <LinearLayout
         android:id="@+id/paginationLayout"

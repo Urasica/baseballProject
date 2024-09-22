@@ -100,7 +100,7 @@ class TradeBoardFragment : Fragment() {
     }
     private fun loadPage(page: Int) {
         currentPage = page  // 페이지 로드 시 currentPage 업데이트
-        ApiObject.getRetrofitService.getBoardsByPage("중고거래게시판", page, 1).enqueue(object : Callback<PagedBoardResponse> {
+        ApiObject.getRetrofitService.getBoardsByPage("나눔게시판", page, 1).enqueue(object : Callback<PagedBoardResponse> {
             override fun onResponse(call: Call<PagedBoardResponse>, response: Response<PagedBoardResponse>) {
                 if (response.isSuccessful) {
                     response.body()?.let { pagedResponse ->
