@@ -3,10 +3,12 @@ package com.example.baseballapp
 import com.example.baseballapp.Ranking.HitterRankData
 import com.example.baseballapp.Ranking.PitcherRankData
 import com.example.baseballapp.Ranking.TeamRankData
+import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
+import retrofit2.http.Header
 import retrofit2.http.POST
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -39,11 +41,12 @@ interface UpbitAPI {
     @DELETE("boards/delete/{id}")
     fun deletePost(@Path("id") id: Long): Call<Void>
 
-    @POST("boards/upvote/{id}")
+    @POST("boards/{id}/upvote")
     fun upvotePost(
         @Path("id") id: Long,
-        @Query("userNickname") userNickname: String
-    ): Call<Void>
+        @Query("userNickname") userNickname: String,
+        @Header("Authorization") token: String
+    ): Call<ResponseBody>
 
     @POST("comments/create")
     fun submitComment(@Query("boardId") boardId: Long, @Body comment: CommentData): Call<Void>

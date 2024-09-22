@@ -17,6 +17,7 @@ import com.example.baseballapp.LoginService
 import com.example.baseballapp.R
 import com.example.baseballapp.databinding.FragmentPostDetailBinding
 import com.example.login.TokenManager
+import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -118,25 +119,34 @@ class PostDetailFragment : Fragment() {
 
     private fun upvotePost(postId: Long) {
         val userNickname = tokenManager.getUsername() ?: return
+        val token = tokenManager.getToken() ?: return
 
         Log.d("PostDetailFragment", "Upvoting post with ID: $postId and userNickname: $userNickname")
-        ApiObject.getRetrofitService.upvotePost(postId, userNickname).enqueue(object : Callback<Void> {
-            override fun onResponse(call: Call<Void>, response: Response<Void>) {
+
+        ApiObject.getRetrofitService.upvotePost(postId, userNickname, "Bearer $token").enqueue(object : Callback<ResponseBody> { // ResponseBody로 변경
+            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                 if (response.isSuccessful) {
-                    Toast.makeText(context, "추천하였습니다.", Toast.LENGTH_SHORT).show()
-                    updateUpvoteInCommunity(postId)
+                    val responseBody = response.body()?.string()
+                    if (responseBody == "Successfully upvote") {
+                        Toast.makeText(context, "추천하였습니다.", Toast.LENGTH_SHORT).show()
+                        updateUpvoteInCommunity(postId)
+                    } else if (responseBody == "already upvote") {
+                        Toast.makeText(context, "이미 추천된 게시글입니다.", Toast.LENGTH_SHORT).show()
+                    }
                 } else {
                     Log.d("PostDetailFragment", "Error code: ${response.code()} - ${response.message()}")
                     Toast.makeText(context, "추천에 실패했습니다. 오류 코드: ${response.code()}", Toast.LENGTH_SHORT).show()
                 }
             }
 
-            override fun onFailure(call: Call<Void>, t: Throwable) {
+            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
                 Log.d("PostDetailFragment", "Network failure: ${t.message}")
                 Toast.makeText(context, "네트워크 오류: ${t.message}", Toast.LENGTH_SHORT).show()
             }
         })
     }
+
+
 
 
     private fun updateUpvoteInCommunity(postId: Long) {
