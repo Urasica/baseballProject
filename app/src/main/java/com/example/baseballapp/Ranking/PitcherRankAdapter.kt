@@ -64,9 +64,14 @@ class PitcherRankAdapter(
         holder.tvWhip.text = item.whip.toString()
         holder.tvQs.text = item.qs.toString()
 
-        // 스크롤뷰 등록
-        registerScrollView(holder.dataScrollView)
+        // 홀수 순위일 때 배경을 lightgray2로 설정
+        if (position % 2 == 0) {
+            holder.itemView.setBackgroundResource(R.color.lightgray2)
+        } else {
+            holder.itemView.setBackgroundResource(android.R.color.white)  // 짝수 순위는 기본 흰색 배경
+        }
     }
+
 
     override fun getItemCount(): Int {
         return items.size

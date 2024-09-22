@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
-    <!-- 로고를 가로로 배치할 LinearLayout -->
+
     <LinearLayout
         android:id="@+id/top_three_layout"
         android:layout_width="match_parent"
@@ -107,7 +107,7 @@
 
 
 
-    <!-- 기존 RecyclerView 및 다른 UI 요소는 그대로 유지 -->
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

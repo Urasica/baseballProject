@@ -78,7 +78,7 @@
 
     </LinearLayout>
 
-    <!-- 이닝 버튼을 가로로 1열 촘촘히 배치 -->
+    <!-- 이닝 버튼을 가로로 배열 -->
     <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -89,7 +89,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <!-- 각 버튼을 촘촘히 배치하고 배경을 흰색으로 설정 -->
+
             <Button
                 android:id="@+id/buttonInning1"
                 android:layout_width="wrap_content"

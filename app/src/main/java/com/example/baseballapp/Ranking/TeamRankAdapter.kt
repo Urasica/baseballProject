@@ -33,9 +33,17 @@ class TeamRankAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         }
     }
 
+
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is TeamRankViewHolder) {
             holder.bind(teamList[position - 1]) // Adjust for header
+
+            // 1위부터 5위까지 배경색을 lightgray로 변경
+            if (position in 1..5) {
+                holder.itemView.setBackgroundColor(holder.itemView.context.getColor(R.color.lightgray2))
+            } else {
+                holder.itemView.setBackgroundColor(holder.itemView.context.getColor(android.R.color.white)) // 나머지 배경 흰색
+            }
         }
     }
 

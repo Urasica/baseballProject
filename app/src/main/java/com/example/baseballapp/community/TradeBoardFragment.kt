@@ -69,7 +69,7 @@ class TradeBoardFragment : Fragment() {
 
     private fun setupPagination(totalPages: Int) {
         val paginationLayout = binding.paginationLayout
-        paginationLayout.removeAllViews() // 기존 버튼 제거
+        paginationLayout.removeAllViews()
 
         for (i in 1..totalPages) {
             val textView = TextView(context).apply {

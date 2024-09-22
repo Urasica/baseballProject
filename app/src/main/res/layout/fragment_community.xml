@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <!-- 상단 배너 또는 이미지 -->
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -175,7 +175,7 @@ class ChatingFragment : Fragment() {
 
             detailParts.forEachIndexed { index, part ->
                 if (index == 0 && part.contains("공격")) {
-                    // 공격 시작 문구를 더 큰 글씨로 볼드체로 설정
+
                     val spannableString = SpannableString(part.trim() + "\n")
                     spannableString.setSpan(
                         StyleSpan(Typeface.BOLD),
@@ -202,9 +202,9 @@ class ChatingFragment : Fragment() {
                         Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
                     )
                     stringBuilder.append(spannableString)
-                    stringBuilder.append("\n") // 줄 간격을 넓히기 위해 빈 줄 추가
+                    stringBuilder.append("\n")
                 } else if (part.contains(":")) {
-                    // 결과 문구를 colors.xml에 정의된 darkblue로 설정
+                    // 결과 문구를  darkblue로 설정
                     val darkBlueColor = ContextCompat.getColor(requireContext(), R.color.darkblue)
                     val resultStartIndex = part.indexOf(":") + 1
                     val resultText = part.substring(resultStartIndex).trim()

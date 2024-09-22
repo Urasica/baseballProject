@@ -56,7 +56,7 @@ class PostAdapter(
         notifyDataSetChanged()
     }
 
-    // 댓글 수를 업데이트하는 함수 (필요 시 사용)
+    // 댓글 수를 업데이트하는 함수
     fun updateCommentCount(postId: Long, newCommentCount: Int) {
         postList = postList.map { post ->
             if (post.id.toLong() == postId) {

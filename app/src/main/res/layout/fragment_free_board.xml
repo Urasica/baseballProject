@@ -96,6 +96,6 @@
         android:gravity="center"
         android:padding="16dp">
 
-        <!-- 페이지 번호 버튼들이 여기에 동적으로 추가됩니다 -->
+
     </LinearLayout>
 </LinearLayout>

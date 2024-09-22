@@ -40,7 +40,10 @@ interface UpbitAPI {
     fun deletePost(@Path("id") id: Long): Call<Void>
 
     @POST("boards/upvote/{id}")
-    fun upvotePost(@Path("id") id: Long): Call<Void>
+    fun upvotePost(
+        @Path("id") id: Long,
+        @Query("userNickname") userNickname: String
+    ): Call<Void>
 
     @POST("comments/create")
     fun submitComment(@Query("boardId") boardId: Long, @Body comment: CommentData): Call<Void>
