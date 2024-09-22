@@ -12,7 +12,6 @@ import com.example.baseballapp.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-
 class RankingFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
@@ -22,6 +21,7 @@ class RankingFragment : Fragment() {
     private lateinit var headerScrollView: HorizontalScrollView
     private lateinit var rootView: View
     private val dataScrollViews = mutableListOf<HorizontalScrollView>()
+    private var isDataScrollInitiated = false // 스크롤 동기화 플래그 추가
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -65,7 +65,10 @@ class RankingFragment : Fragment() {
 
         // ScrollView 동기화
         headerScrollView.setOnScrollChangeListener { _, scrollX, _, _, _ ->
-            dataScrollViews.forEach { it.scrollTo(scrollX, 0) }
+            if (!isDataScrollInitiated) {
+                dataScrollViews.forEach { it.scrollTo(scrollX, 0) }
+            }
+            isDataScrollInitiated = false // 다른 스크롤이 발생할 수 있게 초기화
         }
 
         return rootView
@@ -175,5 +178,12 @@ class RankingFragment : Fragment() {
 
     private fun registerScrollView(scrollView: HorizontalScrollView) {
         dataScrollViews.add(scrollView)
+        scrollView.setOnScrollChangeListener { _, scrollX, _, _, _ ->
+            // 데이터 스크롤 시 헤더도 같이 스크롤
+            isDataScrollInitiated = true
+            headerScrollView.scrollTo(scrollX, 0)
+            // 다른 데이터도 같이 스크롤
+            dataScrollViews.forEach { it.scrollTo(scrollX, 0) }
+        }
     }
 }

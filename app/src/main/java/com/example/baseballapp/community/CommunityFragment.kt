@@ -1,6 +1,7 @@
 package com.example.baseballapp.community
 
 import android.content.Intent
+import android.graphics.Paint
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -98,19 +99,27 @@ class CommunityFragment : Fragment() {
             .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
             .commit()
     }
-
     private fun updateButtonState(activeButton: Button) {
         val buttons = listOf(binding.freeBoardButton, binding.questionBoardButton, binding.tradeBoardButton)
         buttons.forEach { button ->
             if (button == activeButton) {
-                button.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.blue))
-                button.setTextColor(ContextCompat.getColor(requireContext(), R.color.white))
+                // 텍스트 색상 navy로 변경
+                button.setTextColor(ContextCompat.getColor(requireContext(), R.color.navy))
+                // 밑줄 스타일 적용
+                button.paintFlags = button.paintFlags or Paint.UNDERLINE_TEXT_FLAG
+                // 텍스트 크기 증가
+                button.textSize = 25f
             } else {
-                button.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.white))
+                // 기본 텍스트 색상으로 복귀
                 button.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
+                // 밑줄 제거
+                button.paintFlags = button.paintFlags and Paint.UNDERLINE_TEXT_FLAG.inv()
+                // 텍스트 크기 기본값으로 복귀
+                button.textSize = 22f
             }
         }
     }
+
 
     private fun performSearch(query: String) {
         Log.d("CommunityFragment", "Performing search for: $query")

@@ -13,7 +13,7 @@ class PitcherRankAdapter(
     private val registerScrollView: (HorizontalScrollView) -> Unit
 ) : RecyclerView.Adapter<PitcherRankAdapter.ViewHolder>() {
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val tvRank: TextView = view.findViewById(R.id.tv_rank)
         val tvName: TextView = view.findViewById(R.id.tv_name)
         val tvTeam: TextView = view.findViewById(R.id.tv_team)
@@ -34,6 +34,31 @@ class PitcherRankAdapter(
         val tvWhip: TextView = view.findViewById(R.id.tv_whip)
         val tvQs: TextView = view.findViewById(R.id.tv_qs)
         val dataScrollView: HorizontalScrollView = view.findViewById(R.id.data_scroll_view)
+
+        fun bind(pitcherRankData: PitcherRankData) {
+            tvRank.text = pitcherRankData.rank.toString()
+            tvName.text = pitcherRankData.name
+            tvTeam.text = pitcherRankData.team
+            tvGames.text = pitcherRankData.games.toString()
+            tvWins.text = pitcherRankData.wins.toString()
+            tvLosses.text = pitcherRankData.losses.toString()
+            tvSave.text = pitcherRankData.save.toString()
+            tvHold.text = pitcherRankData.hold.toString()
+            tvInnings.text = pitcherRankData.innings.toString()
+            tvPitchCount.text = pitcherRankData.pitchCount.toString()
+            tvHits.text = pitcherRankData.hits.toString()
+            tvHomeRuns.text = pitcherRankData.homeRuns.toString()
+            tvStrikeout.text = pitcherRankData.strikeout.toString()
+            tvBaseOnBall.text = pitcherRankData.baseOnBall.toString()
+            tvRuns.text = pitcherRankData.runs.toString()
+            tvEarnedRuns.text = pitcherRankData.earnedRuns.toString()
+            tvEarnedRunsAVG.text = pitcherRankData.earnedRunsAVG.toString()
+            tvWhip.text = pitcherRankData.whip.toString()
+            tvQs.text = pitcherRankData.qs.toString()
+
+            // 스크롤뷰를 등록하여 스크롤 이벤트 동기화
+            registerScrollView(dataScrollView)
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -43,26 +68,7 @@ class PitcherRankAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = items[position]
-        holder.tvRank.text = item.rank.toString()
-        holder.tvName.text = item.name
-        holder.tvTeam.text = item.team
-        holder.tvGames.text = item.games.toString()
-        holder.tvWins.text = item.wins.toString()
-        holder.tvLosses.text = item.losses.toString()
-        holder.tvSave.text = item.save.toString()
-        holder.tvHold.text = item.hold.toString()
-        holder.tvInnings.text = item.innings.toString()
-        holder.tvPitchCount.text = item.pitchCount.toString()
-        holder.tvHits.text = item.hits.toString()
-        holder.tvHomeRuns.text = item.homeRuns.toString()
-        holder.tvStrikeout.text = item.strikeout.toString()
-        holder.tvBaseOnBall.text = item.baseOnBall.toString()
-        holder.tvRuns.text = item.runs.toString()
-        holder.tvEarnedRuns.text = item.earnedRuns.toString()
-        holder.tvEarnedRunsAVG.text = item.earnedRunsAVG.toString()
-        holder.tvWhip.text = item.whip.toString()
-        holder.tvQs.text = item.qs.toString()
+        holder.bind(items[position])
 
         // 홀수 순위일 때 배경을 lightgray2로 설정
         if (position % 2 == 0) {
@@ -71,7 +77,6 @@ class PitcherRankAdapter(
             holder.itemView.setBackgroundResource(android.R.color.white)  // 짝수 순위는 기본 흰색 배경
         }
     }
-
 
     override fun getItemCount(): Int {
         return items.size

@@ -45,9 +45,11 @@
         <TextView
             android:id="@+id/tv_detail_content"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="200sp"
             android:layout_marginTop="8dp"
-            android:textSize="18sp" />
+            android:textSize="22sp"
+            android:textStyle="bold"
+            />
 
         <View
             android:layout_width="match_parent"
@@ -57,14 +59,20 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_comments"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="200sp"
             android:layout_marginTop="16dp" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#cccccc"
+            android:layout_marginTop="8dp" />
         <EditText
             android:id="@+id/et_comment"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="100sp"
             android:layout_marginTop="16dp"
-            android:hint="댓글을 입력하세요" />
+            android:hint="댓글을 입력하세요"
+            android:gravity="bottom|start" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -77,8 +85,9 @@
                 android:id="@+id/btn_submit_comment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/blue"
+                android:backgroundTint="@color/navy"
                 android:text="댓글 작성"
+                android:fontFamily="@font/kbo_medium"
                 android:textColor="@android:color/white" />
 
             <ImageButton
